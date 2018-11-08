@@ -72,7 +72,7 @@ exports.createPages = (({graphql, actions}) => {
 
         createTagPages(createPage, posts);
 
-        posts.forEach(({node}, index) => {
+        posts.forEach(({ node }, index) => {
           const nodePath = node.frontmatter.path;
 
           createPage({
