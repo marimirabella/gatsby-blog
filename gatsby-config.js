@@ -13,5 +13,6 @@ module.exports = {
       }
     },
     `gatsby-plugin-styled-components`
-  ]
+  ],
+  pathPrefix: "/gatsby-blog-demo"
 }
