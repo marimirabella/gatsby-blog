@@ -2,6 +2,8 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
 
+import Layout from '../components/Layout';
+
 const BlogWrapper = styled.div`
   padding: 0 30px;
   font-size: 1.1rem;
@@ -42,25 +44,26 @@ const Template = ({data, pageContext}) => {
   const html = markdownRemark.html;
   
   return (
-    <BlogWrapper>
-      <BlogHeader>{title}</BlogHeader>
-      <BlogPost
-        className="blogpost"
-        dangerouslySetInnerHTML={{__html: html}}
-      />
-      <Links>
-        {next &&
-          <PostLink to={`pages/${next.frontmatter.path}`}>
-            Next
-          </PostLink>
-        }
-        {prev &&
-          <PostLink to={`pages/${prev.frontmatter.path}`}>
-            Previous
-          </PostLink>
-        }
-      </Links>
-    </BlogWrapper>
+    <Layout>
+      <BlogWrapper>
+        <BlogHeader>{title}</BlogHeader>
+         <BlogPost
+            className="blogpost"
+            dangerouslySetInnerHTML={{__html: html}} />
+        <Links>
+          {next &&
+            <PostLink to={`pages/${next.frontmatter.path}`}>
+              Next
+            </PostLink>
+          }
+          {prev &&
+            <PostLink to={`pages/${prev.frontmatter.path}`}>
+              Previous
+            </PostLink>
+          }
+        </Links>
+      </BlogWrapper>
+    </Layout>
   );
 };
 

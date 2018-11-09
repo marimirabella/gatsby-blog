@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
+import Layout from '../components/Layout';
 
 const SingleTag = styled.div`
   display: flex;
@@ -25,20 +26,22 @@ const SingleTagTemplate = ({pageContext}) => {
   const { posts, tagName } = pageContext;
   
   return (
-    <SingleTag>
-      <h2>Posts about {`${tagName}`}</h2>
-      <TagsList>
-        {posts.map((post, index) => {
-          return(
-            <TagItem key={index}>
-              <TagLink to={`pages/${post.frontmatter.path}`}>
-                {post.frontmatter.title}
-              </TagLink>
-            </TagItem>
-          );
-        })}
-      </TagsList>
-    </SingleTag>
+    <Layout>
+      <SingleTag>
+        <h2>Posts about {`${tagName}`}</h2>
+        <TagsList>
+          {posts.map((post, index) => {
+            return(
+              <TagItem key={index}>
+                <TagLink to={`pages/${post.frontmatter.path}`}>
+                  {post.frontmatter.title}
+                </TagLink>
+              </TagItem>
+            );
+          })}
+        </TagsList>
+      </SingleTag>
+    </Layout>
   );
 };
 
