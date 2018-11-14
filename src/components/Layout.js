@@ -24,14 +24,6 @@ const Inner = styled.div`
   align-items: center;
 `;
 
-export const wrapRootElement = ({ element }) => {
-  return (
-    <Container>
-      {element}
-    </Container>
-  );
-};
-
 const Layout = ({ children }) => (
   <Container>
     <GlobalStyle />

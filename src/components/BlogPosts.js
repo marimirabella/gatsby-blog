@@ -22,11 +22,11 @@ const TagLink = styled(Link)`
 const BlogPosts = ({ edges }) => (
   <React.Fragment>
     {edges.map(({ node }) => (
-        <BlogPostsWrapper key={node.frontmatter.path}>
-          <Link to={`pages/${node.frontmatter.path}`}>
-            {node.frontmatter.title}
-          </Link>
-        </BlogPostsWrapper>
+      <BlogPostsWrapper key={node.frontmatter.path}>
+        <Link to={`pages/${node.frontmatter.path}`}>
+          {node.frontmatter.title}
+        </Link>
+      </BlogPostsWrapper>
     ))}
 
     <TagsWrapper>

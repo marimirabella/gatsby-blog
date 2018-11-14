@@ -1,8 +1,9 @@
-import React from 'react'; 
+import React, { lazy, Suspense } from 'react'; 
 import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
 
 import Layout from '../components/Layout';
+let PostTemplate = lazy(() => import('./post'));
 
 const BlogWrapper = styled.div`
   padding: 0 30px;
@@ -11,16 +12,6 @@ const BlogWrapper = styled.div`
 
 const BlogHeader = styled.h2`
   text-align: center;
-`;
-
-const BlogPost = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  img {
-    width: 50%;
-  }
 `;
 
 const Links = styled.div`
@@ -41,28 +32,31 @@ const Template = ({data, pageContext}) => {
   
   const { markdownRemark } = data;
   const title = markdownRemark.frontmatter.title;
-  const html = markdownRemark.html;
+
+  const updateComponent = () => {
+    PostTemplate = lazy(() => import('./post'));
+  };
   
   return (
     <Layout>
-      <BlogWrapper>
-        <BlogHeader>{title}</BlogHeader>
-         <BlogPost
-            className="blogpost"
-            dangerouslySetInnerHTML={{__html: html}} />
-        <Links>
-          {next &&
-            <PostLink to={`pages/${next.frontmatter.path}`}>
-              Next
-            </PostLink>
-          }
-          {prev &&
-            <PostLink to={`pages/${prev.frontmatter.path}`}>
-              Previous
-            </PostLink>
-          }
-        </Links>
-      </BlogWrapper>
+      <Suspense fallback="Loading...">
+        <BlogWrapper>
+          <BlogHeader>{title}</BlogHeader>
+            <PostTemplate html={markdownRemark.html} />
+          <Links>
+            {next &&
+              <PostLink to={`pages/${next.frontmatter.path}`} onClick={updateComponent}>
+                Next
+              </PostLink>
+            }
+            {prev &&
+              <PostLink to={`pages/${prev.frontmatter.path}`} onClick={updateComponent}>
+                Previous
+              </PostLink>
+            }
+          </Links>
+        </BlogWrapper>
+      </Suspense>
     </Layout>
   );
 };
@@ -73,6 +67,7 @@ export const query = graphql`
       html
       frontmatter {
         title
+        path
       }
     }
   }
