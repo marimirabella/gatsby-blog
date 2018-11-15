@@ -44,7 +44,7 @@ const Template = ({data, pageContext}) => {
       <Suspense fallback="Loading...">
         <BlogWrapper>
           <BlogHeader>{title}</BlogHeader>
-            <Img sizes={markdownRemark.frontmatter.cover_image.childImageSharp.sizes} />
+            <Img fluid={markdownRemark.frontmatter.cover_image.childImageSharp.fluid} alt={title} />
             <PostTemplate html={markdownRemark.html} />
           <Links>
             {next &&
@@ -73,8 +73,8 @@ export const query = graphql`
         path
         cover_image {
           childImageSharp {
-            sizes (maxHeight: 200, maxWidth: 50) {
-              src
+            fluid (sizes: "50px 100px") {
+              ...GatsbyImageSharpFluid
             }
           }
         }
@@ -84,8 +84,3 @@ export const query = graphql`
 `;
 
 export default Template;
-          // childImageSharp {
-          //   fluid (maxHeight: 200, maxWidth: 50) {
-          //     ...GatsbyImageSharpFluid
-          //   }
-          // }
