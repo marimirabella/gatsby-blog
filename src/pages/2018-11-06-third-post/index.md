@@ -3,6 +3,7 @@ path: "third-post"
 date: "2018-11-06"
 title: "The Last Post"
 tags: ['Gatsby', 'Great', 'Cheers']
+cover_image: "./rose.jpg"
 excerpt: "A preview of my third post"
 ---
 

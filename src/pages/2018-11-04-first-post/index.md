@@ -4,6 +4,7 @@ path: "first-post"
 date: "2018-11-04"
 title: "My First Post"
 tags: ['DiCaprio', 'Gatsby', 'Cheers']
+cover_image: "./rose.jpg"
 excerpt: "A preview of my firtst post"
 ---
 

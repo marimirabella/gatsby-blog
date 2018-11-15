@@ -12,6 +12,15 @@ module.exports = {
         path: `${__dirname}/src`
       }
     },
+    `gatsby-remark-copy-linked-files`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-remark-images`,
+      options: {
+        maxWidth: 300,
+      }
+    },
     `gatsby-plugin-styled-components`
   ],
   pathPrefix: "/gatsby-blog-demo"

@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from 'react'; 
 import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
+import Img from 'gatsby-image';
 
 import Layout from '../components/Layout';
 let PostTemplate = lazy(() => import('./post'));
@@ -32,6 +33,7 @@ const Template = ({data, pageContext}) => {
   
   const { markdownRemark } = data;
   const title = markdownRemark.frontmatter.title;
+  console.log(markdownRemark.frontmatter.cover_image)
 
   const updateComponent = () => {
     PostTemplate = lazy(() => import('./post'));
@@ -42,6 +44,7 @@ const Template = ({data, pageContext}) => {
       <Suspense fallback="Loading...">
         <BlogWrapper>
           <BlogHeader>{title}</BlogHeader>
+            <Img sizes={markdownRemark.frontmatter.cover_image.childImageSharp.sizes} />
             <PostTemplate html={markdownRemark.html} />
           <Links>
             {next &&
@@ -68,9 +71,21 @@ export const query = graphql`
       frontmatter {
         title
         path
+        cover_image {
+          childImageSharp {
+            sizes (maxHeight: 200, maxWidth: 50) {
+              src
+            }
+          }
+        }
       }
     }
   }
 `;
 
 export default Template;
+          // childImageSharp {
+          //   fluid (maxHeight: 200, maxWidth: 50) {
+          //     ...GatsbyImageSharpFluid
+          //   }
+          // }

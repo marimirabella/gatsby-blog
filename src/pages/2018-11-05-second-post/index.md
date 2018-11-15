@@ -3,6 +3,7 @@ path: "second-post"
 date: "2018-11-05"
 title: "Second Post"
 tags: ['Daisy', 'Gatsby']
+cover_image: "./rose.jpg"
 excerpt: "A preview of my second post"
 ---
 
