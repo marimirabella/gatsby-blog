@@ -4,6 +4,10 @@ import styled, { createGlobalStyle } from 'styled-components';
 import Nav from './Nav';
 
 const GlobalStyle = createGlobalStyle`
+  html {
+    font-size: 16px;
+  }
+
   body {
     margin: 0;
     height: 100%;

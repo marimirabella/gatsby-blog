@@ -12,13 +12,20 @@ module.exports = {
         path: `${__dirname}/src`
       }
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`
+      }
+    },
     `gatsby-remark-copy-linked-files`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-remark-images`,
       options: {
-        maxWidth: 300,
+        maxWidth: 700
       }
     },
     `gatsby-plugin-styled-components`

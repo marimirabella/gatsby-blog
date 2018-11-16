@@ -1,17 +1,15 @@
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
 
 import Header from './../components/Header';
 import Layout from '../components/Layout';
-const BlogPosts = lazy(() => import('../components/BlogPosts'));
+import BlogPosts from './../components/BlogPosts';
 
 const App = ({ data }) => (
-  <Suspense fallback={<div>Loading...</div>}>
-    <Layout>
-      <Header />
-      <BlogPosts edges={data.allMarkdownRemark.edges} />
-    </Layout>
-  </Suspense>
+  <Layout>
+    <Header />
+    <BlogPosts edges={data.allMarkdownRemark.edges} />
+  </Layout>
 );
 
 export const query = graphql`

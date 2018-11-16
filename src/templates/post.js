@@ -1,42 +1,46 @@
-import React from 'react';
-import styled from 'styled-components';
+/************************************* 
+This code was for React lazy, Suspense
+************************************ */
 
-const BlogPost = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+// import React from 'react';
+// import styled from 'styled-components';
 
-  img {
-    width: 50%;
-  }
-`;
+// const BlogPost = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
 
-const PostFetcher = (props) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(<PostTemplate {...props} />);
-    }, 3000);
-  });
-};
+//   img {
+//     width: 50%;
+//   }
+// `;
 
-const PostHandler = (fetcher) => {
-  let ref, task;
-  return (props) => {
-      task = fetcher(props);
-      task.then(res => {
-        ref = res;
-      });
-      if (ref) return ref;
-      else throw task;
-  }
-};
+// const PostFetcher = (props) => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve(<PostTemplate {...props} />);
+//     }, 3000);
+//   });
+// };
 
-const PostTemplate = ({ html }) => {
-  return (
-    <BlogPost
-      dangerouslySetInnerHTML={{__html: html}}>
-    </BlogPost>
-  );
-};
+// const PostHandler = (fetcher) => {
+//   let ref, task;
+//   return (props) => {
+//       task = fetcher(props);
+//       task.then(res => {
+//         ref = res;
+//       });
+//       if (ref) return ref;
+//       else throw task;
+//   }
+// };
 
-export default PostHandler(PostFetcher);
+// const PostTemplate = ({ html }) => {
+//   return (
+//     <BlogPost
+//       dangerouslySetInnerHTML={{__html: html}}>
+//     </BlogPost>
+//   );
+// };
+
+// export default PostHandler(PostFetcher);

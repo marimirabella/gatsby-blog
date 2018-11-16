@@ -1,6 +1,7 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
+import Image from './Image';
 
 const HeaderWrapper = styled.div`
   display: flex;
@@ -9,8 +10,10 @@ const HeaderWrapper = styled.div`
   margin-bottom: 0.8rem;
 `;
 
-const HeaderImage = styled.img`
-  width: 205px;
+const ImageWrapper = styled.div`
+  max-width: 700px;
+  width: 300%;
+  padding-bottom: 20px;
 `;
 
 const Heading = styled.h1`
@@ -31,12 +34,12 @@ const TitleAndDescription = ({data}) => {
 
   return (
     <HeaderWrapper>
-      <HeaderImage
-        src='https://user-images.githubusercontent.com/21834/34442516-fb1a1a3c-ecc2-11e7-8fe8-530435f22336.jpg'
-        alt="Gatsby Logo"
-      />
+      <Image name="logoImage" />
       <Heading>{title}</Heading>
       <Description>{description}</Description>
+      <ImageWrapper>
+        <Image name="MainImage" />
+      </ImageWrapper>
     </HeaderWrapper>
   );
 };
