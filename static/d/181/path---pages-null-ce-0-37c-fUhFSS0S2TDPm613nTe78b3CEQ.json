@@ -1,1 +1,0 @@
-{"errors":[{"message":"Variable \"$pagePath\" got invalid value null; Expected non-nullable type String! not to be null.","locations":[{"line":2,"column":3}]}],"pageContext":{"pagePath":null,"prev":{"frontmatter":{"path":"third-post","title":"The Last Post","tags":["Gatsby","Great","Cheers"]}},"next":null}}
