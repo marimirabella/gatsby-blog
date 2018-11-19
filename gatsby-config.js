@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: '/gatsby-blog-demo',
   siteMetadata: {
     title: 'My Blog',
     description: 'This is my cool blog.'
@@ -25,8 +26,7 @@ module.exports = {
     {
       resolve: `gatsby-remark-images`,
       options: {
-        maxWidth: 700,
-        pathPrefix: '/gatsby-blog-demo',
+        maxWidth: 700
       }
     },
     `gatsby-plugin-styled-components`
