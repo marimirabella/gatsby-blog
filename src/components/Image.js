@@ -8,7 +8,6 @@ const Image = ({ name }) => (
     render={data => {
       const { fixed, fluid } = data[name].childImageSharp;
       const { originalName } = fixed || fluid;
-      console.log(fixed, 'fluied', fluid, originalName);
       const title = originalName[0].toUpperCase() + originalName.substr(1, originalName.indexOf('.') - 1);
       return fixed ? <Img fixed={fixed} alt={title} /> : <Img fluid={fluid} alt={title} />;
     }}
